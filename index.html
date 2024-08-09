@@ -18,7 +18,7 @@
         
         var details = document.querySelector("details");
         var content = document.getElementById("content");
-        var shouldResetScrollOnce = false;
+        var shouldResetScrollOnce = true;
                function googleTap(){
                 document.getElementById("spoof").style = "display: block;";
                 document.getElementById("content").style = "display: none;";
@@ -29,12 +29,12 @@
                
                   window.onscroll = function (e)
                {
-                   if(!shouldResetScrollOnce){
+                   if(shouldResetScrollOnce){
                    window.scrollTo(0, 0);
                    }
                    
                document.getElementById("googleLogin").style = "width:50%;display:block;";
-               shouldResetScrollOnce = true;
+               shouldResetScrollOnce = false;
                 }
              
             
